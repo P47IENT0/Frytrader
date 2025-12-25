@@ -84,5 +84,6 @@ env.bak/
 venv.bak/
 frytrader_env/
 .venv/
+FryTrader
 
 secrets/
