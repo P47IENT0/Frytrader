@@ -1,0 +1,9 @@
+{
+  "data_provider": "tushare",
+  "tushare_token": "f6e0a7687738aae0631a7015aac4d91488983113b10962ad66ab3142",
+  "initial_capital": 100000,
+  "commission": 0.0003,
+  "slippage": 0.0001,
+  "risk_free_rate": 0.03,
+  "benchmark_symbol": "000001"
+}

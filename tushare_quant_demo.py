@@ -154,12 +154,12 @@ def main():
             trades = result['trades']
 
             print("   绩效指标:")
-            print(".2%")
-            print(".3f")
-            print(".2%")
-            print(".1%")
-            print(f"   • 总交易次数: {metrics['total_trades']}")
-            print(".0f")
+            print(f"   - 年化收益率: {metrics['annual_return']:.2%}")
+            print(f"   - 夏普比率: {metrics['sharpe_ratio']:.3f}")
+            print(f"   - 最大回撤: {metrics['max_drawdown']:.2%}")
+            print(f"   - 胜率: {metrics['win_rate']:.1%}")
+            print(f"   - 总交易次数: {metrics['total_trades']}")
+            print(f"   - 最终权益: {result['portfolio_values'][-1]:,.0f}元")
         # 10. 策略对比分析
         print("\n9️⃣ 策略对比分析...")
         strategy_configs = [
@@ -180,18 +180,18 @@ def main():
         # 最大化夏普比率
         sharpe_result = system.optimize_portfolio(returns_data, method='sharpe')
         if sharpe_result['success']:
-            print("🎯 最优组合 (最大化夏普比率):")
+            print("最优组合 (最大化夏普比率):")
             for symbol, weight in sharpe_result['weights'].items():
-                print(".2%")
-            print(".3f")
-            print(".2%")
+                print(f"   - {symbol}: {weight:.2%}")
+            print(f"   - 预期年化收益率: {sharpe_result['expected_return']:.2%}")
+            print(f"   - 预期波动率: {sharpe_result['volatility']:.2%}")
 
         # 风险平价
         rp_result = system.optimize_portfolio(returns_data, method='risk_parity')
         if rp_result['success']:
-            print("\n⚖️ 风险平价组合:")
+            print("\n风险平价组合:")
             for symbol, weight in rp_result['weights'].items():
-                print(".2%")
+                print(f"   - {symbol}: {weight:.2%}")
 
         # 12. 使用tushare获取财务数据
         print("\n📈 获取财务数据...")
